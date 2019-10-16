@@ -1,7 +1,7 @@
 <?php
     include 'conexao.php';
     
-    $id = $_GET["id"];
+    $id = $_GET["idPessoa"];
 
 ?>
 <!DOCTYPE html>
@@ -29,15 +29,18 @@
         <?php include 'header.php'?>
 
         <div class = "container">
+
             <div class = "row justify-content-center">
-                <button id = "buttonEdicao" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Editar Dados do Paciente</button>
+            Editar Dados do Paciente<!-- <button id = "buttonEdicao" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Editar Dados do Paciente</button> -->
             </div>
             <div class = "text-center">
                 <a href="cadastro.php" style = "font-size:20px;">Voltar</a>
             </div>
+           
         </div>
 
         <!--Modal  Tela de Cadastro-->
+        <!--
         <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -46,7 +49,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                    </div>
+                    </div>-->
 
                     <div class="modal-body">
                         <h5>Dados do Paciente:</h5>
@@ -89,7 +92,7 @@
                             <div class="form-group">
                                 <label for="cpf">CPF:</label>
                                 <input type="text" class="form-control" id="cpf" name = "cpf" value = "<?php echo $cpf?>">
-                                <input type="text" class="form-control" id="id"  name = "id" value = "<?php echo $id?>" style = "display:none;">
+                                <input type="hidden" class="form-control" id="id"  name = "id" value = "<?php echo $id?>" style = "display:none;">
                             </div>
 
                             <div class="form-group">
@@ -213,12 +216,13 @@
 
                         <?php };?>
                         </form>
+                        <!--
                     </div>
                     <div class="modal-footer">
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
           
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

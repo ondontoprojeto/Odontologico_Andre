@@ -199,6 +199,7 @@
                 <table class="table border table-striped">
                     <thead id = "theadCadastro" class = "thead-dark">
                         <tr>
+                            <th scope="col">ID</th>
                             <th scope="col">CPF</th>
                             <th scope="col">RG</th>						
                             <th scope="col">Nome</th>
@@ -229,6 +230,7 @@
                                 //$datadeNascimento = $dtNasci[2] . "-" . $dtNasci[1]. "-" . $dtNasci[0];
                         ?>
                             <tr>
+                                <td><?php echo $idPessoa?></td>
                                 <td><?php echo $cpf?></td>
                                 <td><?php echo $rg?></td>
                                 <td><?php echo $nome?></td>
@@ -239,15 +241,10 @@
                                 <td><?php echo $datadeNascimento?></td> -->
                                 <td>
 
-                                    <a class="btn btn-success btn-sm" href="consulta.php" role="button">CONSULTAS</a>
-
-                                    
-
-                                    <a class="btn btn-primary btn-sm"  style="color:#fff" href="#" onclick = "excluir(<?php echo $array['id_pessoa']?>)" role="button"><i aria-hidden="true"></i>VER FICHA</a>
-
-                                    <a class="btn btn-warning btn-sm"  style="color:#fff" href="editarCadastro.php?id=<?php echo $idPessoa?>" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true">EDITAR</i></a> 
-
-                                    <a class="btn btn-danger btn-sm"  style="color:#fff" href="#" onclick = "excluir(<?php echo $array['id_pessoa']?>)" role="button"><i class="fa fa-trash-o" aria-hidden="true"></i>EXCLUIR</a>
+                                    <a class="btn btn-success btn-sm" href="consulta.php?idPessoa=<?php echo $idPessoa?>" role="button">CONSULTAS</a>
+                                    <a class="btn btn-primary btn-sm"  style="color:#fff" href="visualizarCadastro.php?idPessoa=<?php echo $idPessoa?>" role="button"><i aria-hidden="true"></i>VER FICHA</a> <!-- andreneves criar o arquivo visualizar visualizarCadastro.php -->
+                                    <a class="btn btn-warning btn-sm"  style="color:#fff" href="editarCadastro.php?idPessoa=<?php echo $idPessoa?>" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true">EDITAR</i></a> 
+                                    <a class="btn btn-danger btn-sm"  style="color:#fff" href="excluirCadastro.php?idPessoa=<?php echo $idPessoa?>" role="button"><i class="fa fa-trash-o" aria-hidden="true"></i>EXCLUIR</a> <!-- andreneves criar o arquivo visualizar excluirCadastro.php -->
 
                                     <!--<a class="btn btn-success btn-sm"  style="color:#fff" href="consulta.php (<?php echo $array['id_atendimento']?>)" role="button"><i  aria-hidden="true">CONSULTAS</i></a>-->
 

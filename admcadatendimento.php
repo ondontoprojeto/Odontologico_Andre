@@ -2,20 +2,34 @@
 
 	include_once 'conexao.php';
 
-	//
-	$nome = $_POST['nome'];
-	$data = $_POST['data'];
+	$id_pessoa = $_POST['id_pessoa'];
+	$id_dentista = $_POST['id_dentista'];
+	$id_tipoconsulta = $_POST['id_tipoconsulta'];
     $descricao = $_POST['descricao'];
-    $dentista = $_POST['dentista'];
-	
-	
+
+    $sql = "INSERT INTO atendimento VALUES(null, null, null,'{$descricao}')"; 
 
 
-    $sql = "INSERT INTO atendimento VALUES(null,'{$nome}','{$data}', null, '{$descricao}','{$dentista}')"; 
+	if (mysqli_query($con, $sql)) {
+		$last_id = mysqli_insert_id($con);
+		//echo "New record created successfully. Last inserted ID is: " . $last_id;
+	} else {
+		echo "Error: " . $sql . "<br>" . mysqli_error($con);
+	}
 
-	// $inserir = mysqli_query($con, $sql);
+	//$msg = (mysqli_query($con, $sql)) ? "Gravado com sucesso" : "Erro ao gravar";
+	//$last_id = mysqli_insert_id($con);
 
-	$msg = (mysqli_query($con, $sql)) ? "Gravado com sucesso" : "Erro ao gravar";
+    $sql = "INSERT INTO pessoa_atendimento VALUES('{$last_id}', '{$id_pessoa}', '{$id_dentista}','{$id_tipoconsulta}')"; 
 
-	header("location:msgAtendimento.php?msg=".$msg);
+	//$msg = (mysqli_query($con, $sql)) ? "Gravado com sucesso" : "Erro ao gravar";
+	if (mysqli_query($con, $sql)) {
+		//$last_id = mysqli_insert_id($con);
+		//echo "New record created successfully. Last inserted ID is: " . $last_id;
+		$msg = "Gravado com sucesso";
+		header("location:consulta.php?idPessoa={$id_pessoa}&msg={$msg}");
+	} else {
+		echo "Error: " . $sql . "<br>" . mysqli_error($con);
+	}
+
 ?>
