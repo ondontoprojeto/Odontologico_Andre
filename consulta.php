@@ -184,7 +184,7 @@ $sql = "SELECT
                                     <td>
 
                                         <!--<a class="btn btn-secondary btn-sm"  style="color:#fff" href="<?php echo $id_atendimento?>" role="button"><i  aria-hidden="true">PROCEDIMENTOS</i></a>-->           
-                                        <a class="btn btn-warning btn-sm"  style="color:#fff" href="editarAtendimento.php?id=<?php echo $id_atendimento?>" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                        <a class="btn btn-warning btn-sm"  style="color:#fff" href="atendimento_edit.php?id=<?php echo $id_atendimento?>" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                         <a class="btn btn-danger btn-sm"  style="color:#fff" href="deletaAtendimento.php?id=<?php echo $id_atendimento?>" role="button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>

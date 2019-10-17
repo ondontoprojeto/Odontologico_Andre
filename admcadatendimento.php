@@ -5,9 +5,12 @@
 	$id_pessoa = $_POST['id_pessoa'];
 	$id_dentista = $_POST['id_dentista'];
 	$id_tipoconsulta = $_POST['id_tipoconsulta'];
-    $descricao = $_POST['descricao'];
+	$descricao = $_POST['descricao'];
+	
+	$data = date('Y-m-d');
+	$hora = date("H:i:s"); 
 
-    $sql = "INSERT INTO atendimento VALUES(null, null, null,'{$descricao}')"; 
+    $sql = "INSERT INTO atendimento VALUES(null, '{$data}', '{$hora}','{$descricao}')"; 
 
 
 	if (mysqli_query($con, $sql)) {
