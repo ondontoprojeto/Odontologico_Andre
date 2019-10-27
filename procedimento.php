@@ -89,27 +89,21 @@
                                 <h5 class="front-left">Descrição do Procedimento</h5>
                                 <form class = "form-group mt-2" action="procedimentoadd.php" method="post">
                                     
-                                    
-                                    
-                                    <!-- <input type="hidden" name="paciente_id" value="<?php //echo $row['paciente_id'] ?>">-->
-                                    <!-- <input type="hidden" name="dentista_id" value="<?php //echo $row['dentista_id'] ?>">-->
                                     <input type="hidden" name="atendimento_id" value="<?php echo $atendimento_id ?>">
                                     
-                                    
-                                    
-                                    
                                     <div class="form-group">
-                                            <label>Nome do Procedimento:</label>
-                                            <select class="form-control" name="nomedentista" id="nomedentista" placeholder="" name="nomedentista">
+                                            <label>Tipo do Procedimento:</label>
+                                            <select class="form-control" name="procedimento_tipo_id" id="procedimento_tipo_id" placeholder="" name="nomedentista">
                                                 <?php
                                                    include_once 'conexao.php';
-                                                    $sql = "SELECT * FROM procedimento_tipo";
+                                                    $sql = "SELECT * FROM procedimento_tipo ORDER BY nome ASC";
                                                     $busca = mysqli_query($con, $sql);
 
                                                     while($array = mysqli_fetch_array($busca)){
-                                                        $nome = $array['nome'];
+                                                        $id     = $array['id'];
+                                                        $nome   = $array['nome'];
                                                 ?>
-                                                    <option><?php echo $nome ?></option> 
+                                                    <option value="<?php echo $id ?>"><?php echo $nome ?></option> 
                                                 <?php } ?>                          
                                             </select>
                                         </div>
