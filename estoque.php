@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class = "overflow-auto ml-1 mr-1" style = "max-height: 550px">
-                    <table class="table w-100 mt-4">
+                    <table class="table w-100 mt-4 table-striped">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Código</th>
@@ -123,10 +123,16 @@
                                     <td><?php echo $fornecedor?></td>
                                     <td><?php echo $dtVencimento?></td>
                                     <td><?php echo $complemento?></td>
-                                    <td>
-                                        <a class="btn btn-warning btn-sm"  style="color:#fff" href="editarEstoque.php?id=<?php echo $idEstoque?>" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                    <td class = "d-flex justify-content-around">
+                                        <a style = "font-size: 15px" class="btn btn-warning btn-sm text-white"  style="color:#fff" href="editarEstoque.php?id=<?php echo $idEstoque?>" role="button">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            Editar
+                                        </a>
 
-                                        <a class="btn btn-danger btn-sm"  style="color:#fff" href="#" onclick="excluir(<?php echo $array['id_estoque']; ?>)" role="button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        <a style = "font-size: 15px" class="btn btn-danger btn-sm"  style="color:#fff" href="#" onclick="excluir(<?php echo $array['id_estoque']; ?>)" role="button">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            Excluir
+                                        </a>
                                     </td>
                                 </tr>
                             <?php } ?>

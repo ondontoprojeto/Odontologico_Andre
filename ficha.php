@@ -41,13 +41,13 @@
                                 <form>
                                     <div class="form-row">
 
-                                        -------------Botão Buscar Pessoa-----
+                                      <!--   -------------Botão Buscar Pessoa-----
 
                         <input class="form-control mr-2 ml-1" type="search" name = "nome">
                         <button class="btn btn-primary btn-md mr-3" type="submit">Pesquisar</button>
 
                                         -------------Fim Botão Buscar Pessoa
-
+ -->
                                         <div class="form-group col-md-6">
                                             <label for="inputEmail4">Nome:</label>
                                             <input type="text" class="form-control" id="inputEmail4" placeholder="Nome">
@@ -86,8 +86,6 @@
                                             <label for="inputZip">UF:</label>
                                             <input type="text" class="form-control" id="inputZip">
                                         </div>
-                                        
-                                        
                                         <div class="form-group col-md-12">
                                             <label>Tipo da Consulta:</label>
                                             <select name="consulta" class="form-control col-md-8">
@@ -124,7 +122,7 @@
                 <table class="table w-100 mt-4">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Código</th>
+                            <th scope="col">Nº Ficha</th>
                             <th scope="col">Nome </th>
                             <th scope="col">Data Nascimento</th>
                             <th scope="col">Email</th>
@@ -171,10 +169,16 @@
                                 <td><?php echo $dtNascimento?></td>
                                 <td><?php echo $email?></td>
                                 <td><?php echo $telefone?></td>
-                                <td>
-                                    <a class="btn btn-warning btn-sm"  style="color:#fff" href="editarFicha.php?id=<?php echo $idPessoa?>" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <td class = "d-flex justify-content-around">
+                                    <a style = "font-size:15px" class="btn btn-warning btn-sm text-white"  style="color:#fff" href="editarFicha.php?id=<?php echo $idPessoa?>" role="button">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        Editar
+                                    </a>
 
-                                    <a class="btn btn-primary btn-sm"  style="color:#fff" href="#" onclick="visualizar(<?php echo $array['id_pessoa'];?>)" role="button"><i class="fa fa-eye" aria-hidden="true"></i>  Visualizar</i></a>
+                                    <a style = "font-size:15px" class="btn btn-primary btn-sm"  style="color:#fff" href="#" onclick="visualizar(<?php echo $array['id_pessoa'];?>)" role="button">
+                                        <i class="fa fa-eye mr-1" aria-hidden="true"></i>  
+                                        Visualizar</i>
+                                    </a>
                                 </td>
                             </tr>
                         <?php } ?>

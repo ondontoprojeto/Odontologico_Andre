@@ -1,7 +1,7 @@
 <?php
     include 'conexao.php';
     
-    $id = $_GET["idPessoa"];
+    $id = $_GET["id"];
 
 ?>
 <!DOCTYPE html>
@@ -29,18 +29,15 @@
         <?php include 'header.php'?>
 
         <div class = "container">
-
             <div class = "row justify-content-center">
-            Editar Dados do Paciente<!-- <button id = "buttonEdicao" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Editar Dados do Paciente</button> -->
+                <button id = "buttonEdicao" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Editar Dados do Paciente</button>
             </div>
             <div class = "text-center">
                 <a href="cadastro.php" style = "font-size:20px;">Voltar</a>
             </div>
-           
         </div>
 
         <!--Modal  Tela de Cadastro-->
-        <!--
         <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -49,21 +46,21 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                    </div>-->
+                    </div>
 
                     <div class="modal-body">
                         <h5>Dados do Paciente:</h5>
                         <form class = "form-group mt-2" action="atualizaCadastro.php" method="post">
 
                             <?php
-                                $sql = "SELECT * FROM pessoa WHERE id_pessoa = '$id'";
+                                $sql = "SELECT * FROM paciente WHERE id = '$id'";
                                 $buscar = mysqli_query($con, $sql);
 
 
                                 while ($array = mysqli_fetch_array($buscar)){
 
 
-                                $idPessoa = $array['id_pessoa'];
+                                //$idPessoa = $array['id_pessoa'];
                                 $cpf = $array['cpf'];
                                 $rg = $array['rg'];
                                 $nome = $array['nome'];
@@ -88,90 +85,85 @@
                                 $queixaprinc = $array['queixaprinc'];    
                             ?>
 
-
-                            <div class="form-group">
-                                <label for="cpf">CPF:</label>
-                                <input type="text" class="form-control" id="cpf" name = "cpf" value = "<?php echo $cpf?>">
-                                <input type="hidden" class="form-control" id="id"  name = "id" value = "<?php echo $id?>" style = "display:none;">
+                            <div class = "form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="cpf">CPF:</label>
+                                    <input type="text" class="form-control" id="cpf" name = "cpf" value = "<?php echo $cpf?>">
+                                    <input type="text" class="form-control" id="id"  name = "id" value = "<?php echo $id?>" style = "display:none;">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="rg">RG:</label>
+                                    <input type="text" class="form-control" id="rg" name = "rg" value = "<?php echo $rg?>">
+                                </div>
                             </div>
-
-                            <div class="form-group">
-                                <label for="rg">RG:</label>
-                                <input type="text" class="form-control" id="rg" name = "rg" value = "<?php echo $rg?>">
+                            <div class = "form-row"> 
+                                <div class="form-group col-md-8">
+                                    <label for="nome">Nome:</label>
+                                    <input type="text" class="form-control" id="nome" name = "nome" value = "<?php echo $nome?>">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="nascimento">Data de Nascimento:</label>
+                                    <input type="date" class="form-control" id="nascimento" name = "nascimento" value = "<?php echo $nascimento?>">
+                                </div>
                             </div>
-
                             <div class="form-group">
-                                <label for="nome">Nome:</label>
-                                <input type="text" class="form-control" id="nome" name = "nome" value = "<?php echo $nome?>">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" name = "email" value = "<?php echo $email?>">
                             </div>
 
                             <div class="form-group">
                                 <label for="orcamento">Orçamento:</label>
                                 <input type="text" class="form-control" id="orcamento" name = "orcamento" value = "<?php echo $orcamento?>">
+                            </div> 
+                            <div class = "form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="telefone">Telefone:</label>
+                                    <input type="text" class="form-control" id="telefone" name = "telefone" value = "<?php echo $telefone?>">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="celular">Celular:</label>
+                                    <input type="text" class="form-control" id="celular" name = "celular" value = "<?php echo $celular?>">
+                                </div>                                                        
                             </div>
-
-                            <div class="form-group">
-                                <label for="telefone">Telefone:</label>
-                                <input type="text" class="form-control" id="telefone" name = "telefone" value = "<?php echo $telefone?>">
+                            <div class = "form-row">
+                                <div class="form-group col-md-5">
+                                    <label for="endereco">Endereço:</label>
+                                    <input type="endereco" class="form-control" id="endereco" name = "endereco" value = "<?php echo $endereco?>">
+                                </div>  
+                                <div class="form-group col-md-4">
+                                    <label for="bairro">Bairro:</label>
+                                    <input type="text" class="form-control" id="bairro" name = "bairro" value = "<?php echo $bairro?>">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="cep">CEP:</label>
+                                    <input type="text" class="form-control" id="cep" name = "cep" value = "<?php echo $cep?>">
+                                </div>
                             </div>
-
-                            <div class="form-group">
-                                <label for="celular">Celular:</label>
-                                <input type="text" class="form-control" id="celular" name = "celular" value = "<?php echo $celular?>">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" name = "email" value = "<?php echo $email?>">
-                            </div>                              
-                                                        
-
-                            <div class="form-group">
-                                <label for="cep">CEP:</label>
-                                <input type="text" class="form-control" id="cep" name = "cep" value = "<?php echo $cep?>">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="endereco">Endereço:</label>
-                                <input type="endereco" class="form-control" id="endereco" name = "endereco" value = "<?php echo $endereco?>">
-                            </div>  
-
                             <div class="form-group">
                                 <label for="complemento">Complemento:</label>
                                 <input type="text" class="form-control" id="complemento" name = "complemento" value = "<?php echo $complemento?>">
-                            </div>
+                            </div> 
+                            <div class = "form-row">
+                                <div class="form-group col-md-10">
+                                    <label for="cidade">Cidade:</label>
+                                    <input type="text" class="form-control" id="cidade"name = "cidade" value = "<?php echo $cidade?>">
+                                </div>
 
+                                <div class="form-group col-md-2">
+                                    <label for="uf">UF:</label>
+                                    <input type="text" class="form-control" id="uf" name = "uf" value = "<?php echo $uf?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Situação da Ficha:</label>
+                                        <select name="situacaoficha" class="form-control" value = "<?php echo $situacaoficha?>">
+                                            <option value="" disabled selected>- Escolha -</option>
+                                            <option value="ativa">Ativa</option>
+                                            <option value="inativa">Inativa</option>
+                                        </select>
+                            </div>
                             
-                            <div class="form-group">
-                                <label for="bairro">Bairro:</label>
-                                <input type="text" class="form-control" id="bairro" name = "bairro" value = "<?php echo $bairro?>">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="nascimento">Data de Nascimento:</label>
-                                <input type="date" class="form-control" id="nascimento" name = "nascimento" value = "<?php echo $nascimento?>">
-                            </div>  
-
-                            <div class="form-group">
-                                <label for="inicio_tratamento">Inicio do Tratamento:</label>
-                                <input type="date" class="form-control" id="inicio_tratamento" name = "inicio_tratamento" value = "<?php echo $inicio_tratamento?>">
-                            </div>  
-
-                            <div class="form-group">
-                                <label for="cidade">Cidade:</label>
-                                <input type="text" class="form-control" id="cidade"name = "cidade" value = "<?php echo $cidade?>">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="uf">UF:</label>
-                                <input type="text" class="form-control" id="uf" name = "uf" value = "<?php echo $uf?>">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="situacaoficha">Situação da Ficha:</label>
-                                <input type="text" class="form-control" id="situacaoficha"name = "situacaoficha" value = "<?php echo $situacaoficha?>">
-                            </div>
-
                             <div class = "mb-2">
                                 <h5>-----------------------Anamnese---------------------</h5>
                             </div>  
@@ -211,18 +203,16 @@
                                 <input type="text" class="form-control" id="queixaprinc" name = "queixaprinc" value = "<?php echo $queixaprinc?>">
                             </div>                      
 
-
                             <input type="submit" class="btn btn-primary float-right" value = "Atualizar">
 
                         <?php };?>
                         </form>
-                        <!--
                     </div>
                     <div class="modal-footer">
                     </div>
                 </div>
             </div>
-        </div>-->
+        </div>
           
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

@@ -103,80 +103,49 @@
 					</div>				
 				</div>
 			</div>
-
 		<!-- Área de visualização de próximos pacientes -->
 
 		    <div class = "col-lg-5 mt-4">
-		    	<table id = "tableProxi" class = "table border table-hover">
-					<thead id = "theadProxi" class = "bg-light">
-				  		<tr>
-				  			<th><i class="fa fa-calendar mr-2" aria-hidden="true"></i>Próximos Pacientes</th>
+		    	<table id = "tableAni" class = "table border table-hover w-100 h-50">
+					<thead id = "theadAni">
+						<tr  class = "bg-light">
+							<th colspan="3"> <i class="fa fa-calendar mr-2" aria-hidden="true"></i> Próximos Pacientes </th>
+						</tr>
+					</thead>
+
+					<thead id = "theadProce2" class = "bg-primary">
+				    	<tr>
+				      		<th class = "text-center">Horário</th>
+				     	 	<th class = "text-center">Nome</th>
+				    		<th class = "text-center">Situação</th>
 				  		</tr>
 				  	</thead>
-				  	<thead id = "theadProxi2">
-				    	<tr class = "bg-primary">
-					      	<th>Horário</th>
-					      	<th>Nome</th>
-					    	<th>Situação</th>
-					    	<th>Ação</th>
-				  		</tr>
-					</thead>
-					<tbody id = "tbodyProxi">
-				  		<tr>
-				      		<td>8:00</td>
-				      		<td>Leandro Cerqueira</td>
-				      		<td>
-				      			<i class="fa fa-circle text-success" aria-hidden="true"></i>
-				      		</td>
-				      		<td>A</td>
-				    	</tr>
-					    <tr>
-					      
-					      	<td>9:00</td>
-					      	<td>Matheus Ribeiro</td>
-					    	<td>
-					    			<i class = "fa fa-circle text-primary" aria-hidden="true"></i>
-					    	</td>
-					    	<td>A</td>
-					    </tr>
-					    <tr>
-				      		<td>10:00</td>
-				      		<td>Marcus Vinicius</td>
-				      		<td>
-				      			<i class = "fa fa-circle text-danger" aria-hidden="true"></i>
-				      		</td>
-				      		<td>A</td>
-				    	</tr>
-				    	 <tr>
-				      		<td>10:00</td>
-				      		<td>Marcus Vinicius</td>
-				      		<td>
-				      			<i class = "fa fa-circle text-danger" aria-hidden="true"></i>
-				      		</td>
-				      		<td>A</td>
-				    	</tr>
-				    	<tr>
-				      		<td>8:00</td>
-				      		<td>Leandro Cerqueira</td>
-				      		<td>
-				      			<i class="fa fa-circle text-success" aria-hidden="true"></i>
-				      		</td>
-				      		<td>A</td>
-				    	</tr>
-				    	<tr>
-					      
-					      	<td>9:00</td>
-					      	<td>Matheus Ribeiro</td>
-					    	<td>
-					    			<i class = "fa fa-circle text-primary" aria-hidden="true"></i>
-					    	</td>
-					    	<td>A</td>
-					    </tr>
+
+				  	<tbody id = "tbodyAni">
+				    	<?php
+                            include_once 'conexao.php';
+                            $sql = "SELECT * FROM atendimento WHERE dia = left(now(), 10)";
+                            $busca = mysqli_query($con, $sql);
+                            while($array = mysqli_fetch_array($busca)){
+                        ?>
+                            <tr>
+                                <td class = "text-center"><?php echo $array['hora']; ?></td>
+                                <td class = "text-center"><?php echo $array['nome'] ?></td>
+                                <td class = "text-center"><?php echo $array['descricao']?></td>
+                            </tr>
+                        <?php }; ?>
 				 	</tbody>
 				</table>
 				<span>
-					<input class = "text-center" type = "text" value = "N Pacientes" disabled>
+					<?php
+                        include_once 'conexao.php';
+                        $sql = "SELECT COUNT(*) AS total FROM atendimento WHERE dia = left(now(), 10)";
+                        $busca = mysqli_query($con, $sql);
+                       	while($array = mysqli_fetch_array($busca)){
+                    ?>
+					<input class = "text-center" type = "text" value = "<?php echo $array['total']?> Paciente(s)" disabled>
 				</span>
+				<?php } ?>
 				<span>
 					<a href= "agenda.php"><input class = "btn btn-primary float-right" type = "submit" value = "Visualizar Agenda"></a>
 				</span>
@@ -190,56 +159,37 @@
 			<div class = "col"></div>
 			<div class = "col-lg-3 mt-5">
 
-				<table id = "tableAni" class = "table border table-hover w-100 h-50">
+				<table id = "tableAni" class = "table border table-hover w-100 h-100">
 					<thead id = "theadAni">
 						<tr  class = "bg-light">
-							<th  class = "text-center" colspan="2"><i class="fa fa-birthday-cake mr-2" aria-hidden="true"></i>Aniversariantes do Mês</th>
+							<th  class = "text-center" colspan="3"><i class="fa fa-birthday-cake mr-2" aria-hidden="true"></i>Aniversariantes do Mês</th>
 						</tr>
 					</thead>
 
 					<thead id = "theadProce2">
 				    	<tr>
 				      		<th class = "text-center">Nome</th>
-				     	 	<th class = "text-center">Dia</th>
-				    		<th>Contato</th>
+				     	 	<th class = "text-center">Data</th>
+				    		<th class = "text-center">Contato</th>
 				  		</tr>
 				  	</thead>
 
 				  	<tbody id = "tbodyAni">
-				    	<tr>
-				      		<td>Leandro Cerqueira</td>
-				      		<td>16-10</td>
-				      		<td>21 98365-6429</td>
-				    	</tr>
-				    	<tr>
-				      		<td>Matheus Ribeiro</td>
-				    		<td>15-08</td>
-				    		<td>21 98365-6429</td>
-				    	</tr>
-				    	<tr>
-				      		<td>Marcus Vinicius</td>
-				    		<td>22-09</td>
-				    		<td>21 98365-6429</td>
-				    	</tr>
-				    	<tr>
-				      		<td>Paulo Victor</td>
-				    		<td>01-02</td>
-				    		<td>21 98365-6429</td>
-				    	</tr>
-				    	<tr>
-				      		<td>XXX.XXX</td>
-				    		<td>02-08</td>
-				    	</tr>
-				    	<tr>
-				      		<td>Leandro Cerqueira</td>
-				      		<td>05-10</td>
-				      		<td>21 98365-6429</td>
-				    	</tr>
-				    	<tr>
-				      		<td>Marcus Vinicius</td>
-				    		<td>06-09</td>
-				    		<td>21 98365-6429</td>
-				    	</tr>
+				    	<?php
+                            include_once 'conexao.php';
+                            $sql = "SELECT * FROM paciente WHERE MONTH(nascimento) = MONTH(LEFT(NOW(), 10))";
+                            $busca = mysqli_query($con, $sql);
+                            while($array = mysqli_fetch_array($busca)){
+	                        	$nascimento = $array['nascimento'];
+	                            $dtNasci = explode('-', $nascimento);
+	                            $datadeNascimento = $dtNasci[2] . "/" . $dtNasci[1]. "/" . $dtNasci[0];
+                        ?>
+                            <tr>
+                                <td class = "text-center"><?php echo $array['nome']; ?></td>
+                                <td class = "text-center"><?php echo $datadeNascimento ?></td>
+                                <td class = "text-center"><?php echo $array['celular']?></td>
+                            </tr>
+                        <?php } ?>
 				 	</tbody>
 				</table>
 			</div>
@@ -279,7 +229,7 @@
 		<!-- Visualização dos procedimentos realizados -->
 
 			<div class=" col-lg-3 mt-5">
-		    	<table id = "tableProce" class="table table-hover border w-100 h-50">
+		    	<table id = "tableProce" class="table table-hover border w-100 h-100">
 					<thead id = "theadProce">
 				  		<tr class = "bg-light">
 				  			<th class = "text-center" colspan="3"> <i class="fa fa-user-md mr-2" aria-hidden="true"></i>Procedimentos Realizados</th>
@@ -292,39 +242,23 @@
 				    		<th>Dentista</th>
 				  		</tr>
 				  	</thead>
-
-				  <tbody id = "tbodyProce">
-				    <tr>
-				      	<td class = "text-center">Clínica Geral</td>
-				      	<td class = "text-center">5</td>
-				      	<td>Dra.Cristiani</td>
-				    </tr>
-				    <tr>
-				      	<td class = "text-center">Bucomaxilo</td>
-				      	<td class = "text-center">4</td>
-				    	<td>Dra.Adriane</td>
-				    </tr>
-				    <tr>
-				      	<td class = "text-center">Endodontia</td>
-				      	<td class = "text-center">2</td>
-				      	<td>Dra.Adriane</td>
-				    </tr>
-				    <tr>
-				      	<td class = "text-center">Implantodontia</td>
-				      	<td class = "text-center">1</td>
-				      	<td>Dra.Cristiani</td>
-				    </tr>
-				    <tr>
-				      	<td class = "text-center">Endodontia</td>
-				      	<td class = "text-center">2</td>
-				      	<td>Dra.Adriane</td>
-				    </tr>
-				    <tr>
-				      	<td class = "text-center">Implantodontia</td>
-				      	<td class = "text-center">1</td>
-				      	<td>Dra.Cristiani</td>
-				    </tr>
-				 </tbody>
+				  	<tbody id = "tbodyProce">
+				   		<?php
+                            include_once 'conexao.php';
+                            $sql = "SELECT procedimento_1, COUNT(*) AS total, nomedentista FROM atendimento WHERE dia = left(now(), 10) GROUP BY procedimento_1";
+                            $busca = mysqli_query($con, $sql);
+                            while($array = mysqli_fetch_array($busca)){
+                            	$procedimentos =  $array['procedimento_1'];
+                            	$quantidade = $array['total'];
+                            	$dentista = $array['nomedentista'];
+                        ?>
+                            <tr>
+                                <td class = "text-center"><?php echo $procedimentos; ?></td>
+                                <td class = "text-center"><?php echo $quantidade ?></td>
+                                <td class = "text-center"><?php echo $dentista?></td>
+                            </tr>
+                        <?php } ?>
+					 </tbody>
 				</table>
 			</div>
 			<div class = "col"></div>

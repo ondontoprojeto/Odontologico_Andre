@@ -3,9 +3,9 @@
 	include_once 'conexao.php';
 
 	//
-	$nomeprocedimento = $_POST['nomeprocedimento'];
+	$nome = $_POST['nome'];
 	
-    $sql = "INSERT INTO procedimento VALUES(null,'{$nomeprocedimento}')"; 
+    $sql = "INSERT INTO procedimento_tipo VALUES(null,'{$nome}')"; 
 
 	// $inserir = mysqli_query($con, $sql);
 

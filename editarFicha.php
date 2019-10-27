@@ -41,14 +41,14 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title text-primary text-center" id="modalTitle">Edição de Produto</h3>
+                        <h3 class="modal-title text-primary ml-3" id="modalTitle">Edição dos dados do Paciente</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
 
                     <div class="modal-body">
-                        <h5>Dados do Produto:</h5>
+                        <h5>Dados do Paciente:</h5>
                         <form class = "form-group mt-2" action="atualizaEstoque.php" method="post">
 
                             <?php

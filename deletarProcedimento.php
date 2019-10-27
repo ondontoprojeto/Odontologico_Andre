@@ -1,9 +1,11 @@
 <?php
 
 	include_once 'conexao.php';
-	$id = $_GET['id'];
 
-	$sql =  "DELETE FROM procedimento where id_procedimento = $id";
+	$id = $_GET['id'];
+	$atendimento_id = $_GET['atendimento_id'];
+
+	$sql =  "DELETE FROM procedimento where id = $id";
 
 	$deletar = mysqli_query($con, $sql);
 ?>
@@ -23,7 +25,7 @@
 			<center>
 			    <h3>Deletado com Sucesso!</h3>
 			    <div style="margin-top: 10px">
-			    <a href="adm.php" class="btn btn-sm btn-success" style="color:#fff">Voltar</a>
+			    <a href="procedimento.php?atendimento_id=<?php echo $atendimento_id ?>" class="btn btn-sm btn-success" style="color:#fff">Voltar</a>
 			    </div>    
 			</center>
 		</div>
