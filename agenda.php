@@ -45,35 +45,41 @@
                                     <form class = "form-group mt-2" action="cadastrarAgenda.php" method="post"> 
                                        <div class="form-group">
                                             <label for="nome">Paciente:</label>
-                                            <select type="text" class="form-control" id="nome" placeholder="" name = "nome">
+                                            <select type="text" class="form-control" id="nome" placeholder="" name="paciente_id">
                                             <?php
                                                 include_once 'conexao.php';
-                                                $sql = "SELECT * FROM paciente";
+                                                $sql = "SELECT * FROM paciente ORDER BY nome ASC";
                                                 $busca = mysqli_query($con, $sql);
 
                                                 while($array = mysqli_fetch_array($busca)){
-                                                    $nome = $array['nome'];
+                                                    $id     = $array['id'];
+                                                    $nome   = $array['nome'];
                                                     ?>
-                                                   <option><?php echo $nome ?></option> 
+                                                   <option value='<?php echo $id ?>'><?php echo $nome ?></option> 
                                             <?php } ?>
                                             </select>
                                         </div> 
                                      <!-- AQUI É A LISTA DE SELEÇÃO DA consultas-->
+                                       <!--
                                         <div class="form-group">
                                             <label>Tipo da Consulta:</label>
-                                            <select class="form-control" name="atendimentonome" id="atendimentonome" placeholder="" name="atendimentonome">
+                                            <select class="form-control" name="tipo_de_atendimento" id="atendimentonome" placeholder="" name="atendimentonome">
                                                 <?php
+                                                    /*
                                                    include_once 'conexao.php';
 
                                                     $sql = "SELECT * FROM atendimento_tipo";
                                                     $busca = mysqli_query($con, $sql);
                                                     while($array = mysqli_fetch_array($busca)){                                    
                                                         $atendimentonome = $array['atendimentonome'];
+                                                    */
                                                 ?>
-                                                    <option><?php echo $atendimentonome ?></option> 
-                                                <?php } ?>                          
+                                                    <!--<option><?php //echo $atendimentonome ?></option> -->
+                                                <?php //} ?>                          
+                                                <!--
                                             </select>
                                         </div>    
+                                        -->
                                         <div class="row">
                                             <div class="form-group col-md-6">
                                                 <label for="data">Data:</label>
@@ -88,16 +94,17 @@
                                         <!-- AQUI É A LISTA DE SELEÇÃO DE DENTISTA-->
                                         <div class="form-group">
                                             <label>Nome Dentista:</label>
-                                            <select class="form-control" name="nomedentista" id="nomedentista" placeholder="" name="nomedentista">
+                                            <select class="form-control" name="dentista_id" id="nomedentista" placeholder="" name="nomedentista">
                                                 <?php
                                                    include_once 'conexao.php';
-                                                    $sql = "SELECT * FROM dentista";
+                                                    $sql = "SELECT * FROM dentista ORDER BY nome ASC";
                                                     $busca = mysqli_query($con, $sql);
 
-                                                    while($array = mysqli_fetch_array($busca)){
-                                                        $nomedentista = $array['nome'];
-                                                ?>
-                                                    <option><?php echo $nomedentista ?></option> 
+                                                while($array = mysqli_fetch_array($busca)){
+                                                    $id     = $array['id'];
+                                                    $nome   = $array['nome'];
+                                                    ?>
+                                                   <option value='<?php echo $id ?>'><?php echo $nome ?></option> 
                                                 <?php } ?>                          
                                             </select>
                                         </div>
