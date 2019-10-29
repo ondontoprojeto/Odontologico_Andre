@@ -22,12 +22,12 @@
 
     include_once 'conexao.php';
                             
-                            $atendimento_id = $_GET['atendimento_id'];
+    $atendimento_id = $_GET['atendimento_id'];
 
-    
-        
+                        //a.nome, 
+
                         $sql = "SELECT 
-                        a.id, a.nome, a.data, a.descricao, p.nome AS paciente_nome, d.nome AS dentista_nome
+                        a.id, a.data, a.descricao, p.nome AS paciente_nome, d.nome AS dentista_nome
                         FROM atendimento a, paciente p, dentista d
                         WHERE 
                         a.paciente_id = p.id

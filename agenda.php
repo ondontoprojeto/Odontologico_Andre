@@ -17,6 +17,21 @@
 <body>
 	<?php include 'header.php'?>
     <h1 class = "text-center mb-4">Agendamento de Pacientes</h1>
+
+    <div class="container">
+        <?php $msg = $_GET["msg"];
+             if($msg == "Gravado com sucesso"){  ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo $msg;?>
+                </div>
+        <?php } else {?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $msg;?>
+                </div>
+        <?php };?>
+        <!--<a href="agenda.php">Voltar</a>-->
+    </div>
+</body>
         	<div class = "pl-5 pr-5">
                 <span class = "d-flex d-inline-flex mb-2">
                         <form class="form-inline">
@@ -83,7 +98,7 @@
                                         <div class="row">
                                             <div class="form-group col-md-6">
                                                 <label for="data">Data:</label>
-                                                <input type="date" class="form-control" id="data" placeholder="dia" name="dia">
+                                                <input type="date" class="form-control" id="data" placeholder="data" name="data">
                                             </div>
                                             
                                             <div class="form-group col-md-6">
@@ -147,7 +162,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">atendimento_id </th>
-                                <th scope="col">atendimento_nome</th>
+                                <!--<th scope="col">atendimento_nome</th>-->
                                 <th scope="col">paciente_nome</th>                               
                                 <th scope="col">dentista_nome</th> 
                                 <th scope="col">data</th>                               
@@ -161,11 +176,11 @@
                                 //$sql = "SELECT * FROM atendimento";
                                 //a.data, 
                                 //a.descricao, 
+                                //a.nome AS atendimento_nome, 
 
 
                             $sql = "SELECT 
                                     a.id AS atendimento_id, 
-                                    a.nome AS atendimento_nome, 
                                     p.nome AS paciente_nome, 
                                     d.nome AS dentista_nome,
                                     a.data
@@ -178,7 +193,7 @@
 
                                 while($array = mysqli_fetch_array($busca)){
                                     $atendimento_id = $array['atendimento_id'];
-                                    $atendimento_nome = $array['atendimento_nome'];
+                                    //$atendimento_nome = $array['atendimento_nome'];
                                     $paciente_nome = $array['paciente_nome'];
                                     $dentista_nome = $array['dentista_nome'];
                                     $data = $array['data'];
@@ -189,7 +204,7 @@
                             ?>
                                 <tr>                                    
                                     <td><?php echo $atendimento_id?></td>
-                                    <td><?php echo $atendimento_nome?></td>
+                                    <!--<td><?php //echo $atendimento_nome?></td>-->
                                     <td><?php echo $paciente_nome?></td>                                   
                                     <td><?php echo $dentista_nome?></td>
                                     <td><?php echo $data?></td>
